@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import { Image } from "@nextui-org/image";
 import { Chip } from "@nextui-org/chip";
+import { Link, LinkIcon } from "@nextui-org/link";
 
 export default function Products({ data }: { data: Shoe[] }) {
   const [isStarred, setIsStarred] = React.useState(false);
@@ -13,7 +14,7 @@ export default function Products({ data }: { data: Shoe[] }) {
   return (
     <div className="grid max-sm:grid-cols-1 grid-cols-3 gap-2">
       {data.map((product) => {
-        const { label, colors, price, description } = product;
+        const { label, colors, price, description, category, _id } = product;
         return (
           <div
             key={product._id.$oid}
@@ -51,14 +52,16 @@ export default function Products({ data }: { data: Shoe[] }) {
                 src={colors[0].images[0]}
               />
             </div>
-              <div className="w-full flex justify-between px-2">
-                <h3 className="text-sm  font-medium text-white">{label}</h3>
-                <p className="text-medium  font-medium text-default-500">
-                  ${price}
-                </p>
-              </div>
+            <div className="w-full flex justify-between px-2">
+              <h3 className="text-sm  font-medium text-white">{label}</h3>
+              <p className="text-medium  font-medium text-default-500">
+                ${price}
+              </p>
+            </div>
             <Button
               fullWidth
+              as={Link}
+              href={`/shop/${category}/${product._id.$oid}`}
               className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
               <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-secondary-900 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
