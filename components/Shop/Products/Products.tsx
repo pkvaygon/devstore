@@ -17,7 +17,7 @@ export default function Products({ data }: { data: Shoe[] }) {
         return (
           <div
             key={product._id.$oid}
-            className="relative w-full h-80 flex gap-2 flex-col justify-start items-start bg-neutral-900 p-2 rounded-lg shadow-md">
+            className="relative w-full max-sm:h-[370px] h-80 flex gap-2 flex-col justify-start items-start bg-neutral-900 p-2 rounded-lg shadow-md">
             <Chip
               classNames={{
                 base: "bg-gradient-to-br absolute left-7 top-7 z-20 from-indigo-500 to-pink-500 border-small border-white/50 shadow-pink-500/30",
@@ -51,14 +51,12 @@ export default function Products({ data }: { data: Shoe[] }) {
                 src={colors[0].images[0]}
               />
             </div>
-            <div className="flex flex-col">
-              <div className={cn("flex items-start justify-between px-2")}>
-                <h3 className="text-sm font-medium text-white">{label}</h3>
-                <p className="text-medium font-medium text-default-500">
+              <div className="w-full flex justify-between px-2">
+                <h3 className="text-sm  font-medium text-white">{label}</h3>
+                <p className="text-medium  font-medium text-default-500">
                   ${price}
                 </p>
               </div>
-            </div>
             <Button
               fullWidth
               className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
