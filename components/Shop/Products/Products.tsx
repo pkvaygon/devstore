@@ -20,7 +20,7 @@ export default function Products({ data }: { data: Shoe[] }) {
             className="relative w-full h-80 flex gap-2 flex-col justify-start items-start bg-neutral-900 p-2 rounded-lg shadow-md">
             <Chip
               classNames={{
-                base: "bg-gradient-to-br from-indigo-500 to-pink-500 border-small border-white/50 shadow-pink-500/30",
+                base: "bg-gradient-to-br absolute left-7 top-7 z-20 from-indigo-500 to-pink-500 border-small border-white/50 shadow-pink-500/30",
                 content: "drop-shadow shadow-black text-white",
               }}>
               NEW
@@ -30,14 +30,14 @@ export default function Products({ data }: { data: Shoe[] }) {
               className={cn("absolute right-6 top-6 z-20")}
               radius="full"
               size="sm"
-              variant="flat">
+              variant="flat"
+              onClick={() => setIsStarred(!isStarred)}>
               <Icon
                 className={cn("text-default-500", {
                   "text-warning": isStarred,
                 })}
                 icon="solar:star-bold"
                 width={16}
-                onClick={() => setIsStarred(!isStarred)}
               />
             </Button>
             <div className="w-full h-4/5 overflow-hidden rounded-lg">
